@@ -79,8 +79,8 @@ public class Conta {
         return extrato;
     }
     public boolean sacar(Operacao operacao){
-        if(operacao.getTypeOp() == "sacar"){
-            if(operacao.getValor()<=this.saldo || operacao.getValor()>0){
+        if(operacao.getTypeOp() == "Sacar"){
+            if(operacao.getValor()<=this.saldo && operacao.getValor()>0){
                 this.saldo -= operacao.getValor();
                 return true;
             }
