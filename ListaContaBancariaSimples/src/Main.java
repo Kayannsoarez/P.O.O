@@ -4,19 +4,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner ler = new Scanner(System.in);
+        Cliente cliente = new Cliente(01, "Kayann");
+        Conta conta = new Conta(11, 1000, cliente);
 
-        System.out.println(
-                "|--------------------------------------------|\n" +
-                        "=========(Conta Bancaria - Simples)==========|\n" +
-                        "|--------------------------------------------|\n" +
-                        "|[1]Adicionar Contato                        |\n" +
-                        "|[2]Buscar Contato.                          | \n" +
-                        "|[3]Remover Contato.                         |\n" +
-                        "|[4]Atualizar Contato.                       |\n" +
-                        "|[5]Ver Todos.                               |\n" +
-                        "|[6]Sair.                                    |\n" +
-                        "|--------------------------------------------|");
 
 
     }

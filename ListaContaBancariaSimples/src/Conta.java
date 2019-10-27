@@ -7,18 +7,18 @@ public class Conta {
     List<Operacao> listOp;
     Cliente cliente;
 
-    public Conta(){
+    public Conta() {
 
     }
 
-    public Conta(int numero, double saldo, List<Operacao>listOp, Cliente cliente){
+    public Conta(int numero, double saldo, List<Operacao> listOp, Cliente cliente) {
         this.numero = numero;
         this.saldo = saldo;
         this.listOp = listOp;
         this.cliente = cliente;
     }
 
-    public Conta(int numero, double saldo, Cliente cliente){
+    public Conta(int numero, double saldo, Cliente cliente) {
         this.numero = numero;
         this.saldo = saldo;
         this.cliente = cliente;
@@ -27,6 +27,7 @@ public class Conta {
     public int getNumero() {
         return numero;
     }
+
     public void setNumero(int numero) {
         this.numero = numero;
     }
@@ -34,6 +35,7 @@ public class Conta {
     public double getSaldo() {
         return saldo;
     }
+
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
@@ -41,6 +43,7 @@ public class Conta {
     public List<Operacao> getListOp() {
         return listOp;
     }
+
     public void setListOp(List<Operacao> listOp) {
         this.listOp = listOp;
     }
@@ -48,6 +51,7 @@ public class Conta {
     public Cliente getCliente() {
         return cliente;
     }
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -58,17 +62,38 @@ public class Conta {
                 ", listOp=" + listOp + ", cliente=" + cliente + '}';
     }
 
-    public String printExtrato(){
+    // Methods
+
+    public String printExtrato() {
         return this.listOp.toString();
     }
 
-    public String printExtrato(int n){
-        String aux, prin = null;
-        for(int i = this.listOp.size()-1;i>=0;i--){
-            aux = this.listOp.get(i).toString();
-            prin = prin.concat(aux);
-            if(i == this.listOp.size()-n-1)	break;
+    public String printExtrato(int nOp) {
+        String aux, extrato = null;
+        if (nOp <= this.listOp.size()) {
+            for (int i = this.listOp.size() - 1; i >= 0; i--) {
+                aux = this.listOp.get(i).toString();
+                extrato = extrato.concat(aux);
+            }
         }
-        return prin;
+        return extrato;
+    }
+    public boolean sacar(Operacao operacao){
+        if(operacao.getTypeOp() == "sacar"){
+            if(operacao.getValor()<=this.saldo || operacao.getValor()>0){
+                this.saldo -= operacao.getValor();
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean depositar(Operacao operacao){
+        if(operacao.getTypeOp() == "Depositar"){
+            if(operacao.getValor()>=0){
+                this.saldo += operacao.getValor();
+                return true;
+            }
+        }
+        return false;
     }
 }
